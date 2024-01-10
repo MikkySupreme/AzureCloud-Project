@@ -20,6 +20,10 @@ for etiquette_dpe in etiquette_dpe_values:
 
 # COMMAND ----------
 
+sample_df.printSchema()
+
+# COMMAND ----------
+
 # DBTITLE 1,Creation de la table sample
 # MAGIC %sql
 # MAGIC CREATE DATABASE IF NOT EXISTS sample;
