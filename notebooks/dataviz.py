@@ -75,8 +75,8 @@ df_train.printSchema()
 
 # DBTITLE 1,Moyenne de consommation des 5 usages pour chaque étiquette DPE
 average_values = df_train.groupBy("Etiquette_DPE").agg(
-    avg("Conso_5_usages_m2_et_finale").alias("Moyenne_Conso_5_usages_m2_et_finale"),
-    avg("Conso_5_usages_et_finale").alias("Moyenne_Conso_5_usages_et_finale")
+    avg("Conso_5_usages_m2_et_finale").alias("Moyenne Conso 5 usages par m2 kWhef/an"),
+    avg("Conso_5_usages_et_finale").alias("Moyenne Conso d'ECS en énergie kWhef/an")
 )
 
 average_values.show()

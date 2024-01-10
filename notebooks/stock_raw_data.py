@@ -20,8 +20,8 @@ df_test.printSchema()
 # DBTITLE 1,Fonction nettoyage des noms de colonnes avec Regex
 def clean_column_name(column_name):
     column_name = column_name.replace('²', '2')
-    column_name = column_name.replace('é', 'et')
-    return re.sub(r'[ ,;{}()\n\t=/°]', '_', column_name)
+    column_name = column_name.replace('é', 'e')
+    return re.sub(r'[ ,;{}()\n\t=/]', '', column_name)
 
 # COMMAND ----------
 
@@ -35,10 +35,6 @@ clean_df_val = [clean_column_name(c) for c in df_val.columns]
 df_train_cleaned = df_train.toDF(*clean_df_train)
 df_test_cleaned = df_test.toDF(*clean_df_test)
 df_val_cleaned = df_val.toDF(*clean_df_val)
-
-# COMMAND ----------
-
-df_test_cleaned.printSchema
 
 # COMMAND ----------
 
@@ -58,3 +54,7 @@ df_test_cleaned.write.format("delta").saveAsTable(f"{db_test}.raw_data")
 
 db_val = 'val'
 df_val_cleaned.write.format("delta").saveAsTable(f"{db_val}.raw_data")
+
+# COMMAND ----------
+
+

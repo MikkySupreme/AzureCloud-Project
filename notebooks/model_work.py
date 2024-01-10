@@ -13,7 +13,7 @@ df.withColumn('Etiquette_DPE', loaded_model(struct(*map(col, df.columns))))
 
 df_selected = df.select("N_DPE", "Etiquette_DPE")
 path = "/mnt/mount-storage/validation.csv"
-df_selected.write.csv(path, mode="append", header=True)
+df_selected.coalesce(1).write.csv(path, mode="append", header=True)
 
 # COMMAND ----------
 
